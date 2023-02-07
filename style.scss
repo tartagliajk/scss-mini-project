@@ -1,0 +1,48 @@
+@import "colors.scss";
+$margin: 25%;
+
+@function lightnessText($itemcolor)
+{
+    @if(lightness($itemcolor) < 50)
+    {@return rgb(255, 255, 255);
+    }
+    @else
+{
+    @return rgb(0, 0, 0);
+}
+}
+
+@mixin items{
+    width: 32%;
+    height: 30px;
+    padding-top: 10px;
+    background-color: $itemcolor;
+    text-align: center;
+    transition: 0.3s;
+    border: 5px solid $bordercolor;
+    font-size: 20px;
+}
+
+body{
+    background-color: $baccolor;
+    margin-left: $margin;
+    margin-right: $margin;
+}
+
+.navbar{
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    flex-direction: row;
+}
+
+.navbar{
+    div{
+    @include items();
+    color: lightnessText($itemcolor);
+    &:hover{
+        background-color: $itemhovercolor;
+        color: lightnessText($itemhovercolor);
+    }
+} 
+}
